@@ -1,7 +1,8 @@
 plugins {
-	id 'org.springframework.boot' version '2.5.12'
+	id 'org.springframework.boot' version '2.7.0'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'war'
 }
 
 group = 'com.crud'
@@ -13,14 +14,24 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation'org.springframework.boot:spring-boot-starter-web'
+	implementation'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation group: 'org.springframework.data', name: 'spring-data-commons', version: '2.6.3'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	testImplementation 'org.springframework.boot:spring-boot-starter-validation'
+
+
+	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.28'
+
 	compileOnly 'org.projectlombok:lombok:1.18.22'
 	annotationProcessor 'org.projectlombok:lombok:1.18.12'
-	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.28'
+
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.2'
+	testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.3.2'
+	testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '3.3.3'
+	testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.7.0'
+
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 }
+
 
 tasks.named('test') {
 	useJUnitPlatform()
