@@ -7,4 +7,5 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TrelloBadgesDto {
     private TrelloAttachmentsByTypeDto attachmentsByType;
+    private int votes;
 }
